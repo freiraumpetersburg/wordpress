@@ -45,7 +45,8 @@
     "wpackagist-plugin/event-organiser": "^3.7",
     "wpackagist-plugin/svg-support": "^2.3",
     "wpackagist-plugin/wp-piwik": "^1.0",
-    "wpackagist-plugin/gutenberg": "^4.5"
+    "wpackagist-plugin/gutenberg": "^4.5",
+    "wpackagist-plugin/autodescription": "^3.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2",
