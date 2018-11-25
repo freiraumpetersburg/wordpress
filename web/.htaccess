@@ -1,3 +1,6 @@
+# Reverse Proxy
+SetEnvIf X-Forwarded-Proto https HTTPS
+
 # BEGIN WordPress
 RewriteEngine On
 RewriteBase /
