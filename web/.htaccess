@@ -14,3 +14,6 @@ RewriteRule ^(.*\.php)$ wp/$1 [L]
 RewriteRule . index.php [L]
 
 # END WordPress
+
+# Reverse Proxy
+SetEnvIf X-Forwarded-Proto https HTTPS
