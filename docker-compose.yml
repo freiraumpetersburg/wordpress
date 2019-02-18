@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  db_data:
+
+services:
+  wp:
+    build: .
+    ports:
+      - 127.0.0.1:80:80 # change ip if required
+    volumes:
+      - .:/var/www/html
+    links:
+      - "db:${DB_HOST}"
+    depends_on:
+      - db
+
+  wpcli:
+    image: wordpress:cli
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+      - wp
+
+  db:
+    image: mariadb:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    command: [
+        '--default_authentication_plugin=mysql_native_password',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci'
+    ]
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
