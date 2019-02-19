@@ -19,6 +19,8 @@ services:
     image: wordpress:cli
     volumes:
       - .:/var/www/html
+    links:
+      - "db:${DB_HOST}"
     depends_on:
       - db
       - wp
