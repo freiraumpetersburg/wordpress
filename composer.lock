@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "576600badbec4ed6a61a1e450c2333f3",
+    "content-hash": "278bf84140c1fd0ca52ef4bb9bfd4ee1",
     "packages": [
         {
             "name": "composer/installers",
@@ -561,24 +561,6 @@
             "homepage": "https://wordpress.org/plugins/email-address-encoder/"
         },
         {
-            "name": "wpackagist-plugin/event-organiser",
-            "version": "3.7.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/event-organiser/",
-                "reference": "tags/3.7.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/event-organiser.3.7.4.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/event-organiser/"
-        },
-        {
             "name": "wpackagist-plugin/svg-support",
             "version": "2.3.15",
             "source": {
@@ -595,6 +577,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/svg-support/"
+        },
+        {
+            "name": "wpackagist-plugin/the-events-calendar",
+            "version": "4.8.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/the-events-calendar/",
+                "reference": "tags/4.8.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/the-events-calendar.4.8.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/the-events-calendar/"
         },
         {
             "name": "wpackagist-plugin/wp-piwik",
