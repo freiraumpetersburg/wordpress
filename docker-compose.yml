@@ -4,29 +4,35 @@ volumes:
   db_data:
 
 services:
-  wp:
-    build: .
-    ports:
-      - 127.0.0.1:80:80 # change ip if required
+  nginx:
+    image: nginx:stable-alpine
     volumes:
-      - .:/var/www/html
+      - .:/var/www/wordpress
+      - ./config/nginx:/etc/nginx/conf.d
     links:
-      - "db:${DB_HOST}"
-    depends_on:
-      - db
+      - fpm
+    ports:
+      - 127.0.0.1:80:80
+
+  fpm:
+    build: .
+    volumes:
+      - .:/var/www/wordpress
+    links:
+      - "mysql:${DB_HOST}"
 
   wpcli:
     image: wordpress:cli
     volumes:
       - .:/var/www/html
     links:
-      - "db:${DB_HOST}"
+      - "mysql:${DB_HOST}"
     depends_on:
-      - db
-      - wp
+      - mysql
+      - fpm
 
-  db:
-    image: mariadb:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+  mysql:
+    image: mariadb:10.3
     command: [
         '--default_authentication_plugin=mysql_native_password',
         '--character-set-server=utf8mb4',
@@ -38,4 +44,6 @@ services:
       - 127.0.0.1:3306:3306
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: ${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
