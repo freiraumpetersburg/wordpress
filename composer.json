@@ -45,6 +45,7 @@
     "wpackagist-plugin/svg-support": "^2.3",
     "wpackagist-plugin/wp-piwik": "^1.0",
     "wpackagist-plugin/autodescription": "^4.0",
+    "wpackagist-plugin/safe-svg": "^1.9.4",
     "roots/multisite-url-fixer": "^1.1",
     "wpackagist-plugin/the-events-calendar": "^4.8",
     "wpackagist-theme/zakra": "^1.1"
