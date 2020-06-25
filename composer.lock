@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41db48070ca90bf4465ec337cf76b80b",
+    "content-hash": "d57cef8e46853f5fe4a56dc67a4c1a1f",
     "packages": [
         {
             "name": "composer/installers",
@@ -599,6 +599,24 @@
             "homepage": "https://wordpress.org/plugins/advanced-custom-fields/"
         },
         {
+            "name": "wpackagist-plugin/atomic-blocks",
+            "version": "2.8.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/atomic-blocks/",
+                "reference": "tags/2.8.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/atomic-blocks.2.8.4.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/atomic-blocks/"
+        },
+        {
             "name": "wpackagist-plugin/autodescription",
             "version": "4.0.7",
             "source": {
@@ -705,6 +723,42 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-piwik/"
+        },
+        {
+            "name": "wpackagist-theme/atomic-blocks",
+            "version": "1.2.6",
+            "source": {
+                "type": "svn",
+                "url": "https://themes.svn.wordpress.org/atomic-blocks/",
+                "reference": "1.2.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/theme/atomic-blocks.1.2.6.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme",
+            "homepage": "https://wordpress.org/themes/atomic-blocks/"
+        },
+        {
+            "name": "wpackagist-theme/neve",
+            "version": "2.7.3",
+            "source": {
+                "type": "svn",
+                "url": "https://themes.svn.wordpress.org/neve/",
+                "reference": "2.7.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/theme/neve.2.7.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme",
+            "homepage": "https://wordpress.org/themes/neve/"
         },
         {
             "name": "wpackagist-theme/zakra",
