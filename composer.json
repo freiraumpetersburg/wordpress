@@ -59,11 +59,11 @@
   },
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+      "application/content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "application/content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "application/content/themes/{$name}/": ["type:wordpress-theme"]
     },
-    "wordpress-install-dir": "web/wp"
+    "wordpress-install-dir": "application/wp"
   },
   "scripts": {
     "post-root-package-install": [
