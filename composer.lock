@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d57cef8e46853f5fe4a56dc67a4c1a1f",
+    "content-hash": "06e51a6e5bcd89a0089f998a71b8dfda",
     "packages": [
         {
             "name": "composer/installers",
@@ -762,15 +762,15 @@
         },
         {
             "name": "wpackagist-theme/zakra",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "svn",
                 "url": "https://themes.svn.wordpress.org/zakra/",
-                "reference": "1.4.4"
+                "reference": "1.4.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/zakra.1.4.4.zip"
+                "url": "https://downloads.wordpress.org/theme/zakra.1.4.5.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
