@@ -1,13 +1,13 @@
 # Application
-application/app/plugins/*
-!application/app/plugins/.gitkeep
-application/app/mu-plugins/*/
-application/app/upgrade
-application/app/uploads/*
-!application/app/uploads/.gitkeep
+application/content/plugins/*
+!application/content/plugins/.gitkeep
+application/content/mu-plugins/*/
+application/content/upgrade
+application/content/uploads/*
+!application/content/uploads/.gitkeep
 
-application/app/themes/*
-!application/app/themes/kulturverein-petersburg
+application/content/themes/*
+!application/content/themes/kulturverein-petersburg
 
 # WordPress
 application/wp
