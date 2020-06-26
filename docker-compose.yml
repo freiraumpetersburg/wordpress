@@ -4,32 +4,34 @@ volumes:
   db_data:
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    volumes:
-      - .:/var/www/wordpress
-      - ./config/nginx:/etc/nginx/conf.d
-    links:
-      - fpm
+  wordpress:
+    image: kulturverein_wordpress:latest
+    build: .
+    volumes: 
+      - ./application:/var/www/application
+      - ./vendor:/var/www/vendor
+      - ./config:/var/www/config
     ports:
       - 127.0.0.1:80:80
-
-  fpm:
-    build: .
-    volumes:
-      - .:/var/www/wordpress
     links:
-      - "mysql:${DB_HOST}"
-
-  wpcli:
-    image: wordpress:cli
-    volumes:
-      - .:/var/www/html
-    links:
-      - "mysql:${DB_HOST}"
-    depends_on:
       - mysql
-      - fpm
+    environment:
+      DB_NAME: wordpress
+      DB_USER: root
+      DB_PASSWORD: secret
+      DB_HOST: mysql
+      WP_ENV: development
+      WP_HOME: http://kulturverein-petersburg.test
+      WP_SITEURL: ${WP_HOME}/wp
+      DOMAIN_CURRENT_SITE: kulturverein-petersburg.test
+      AUTH_KEY: random_secret
+      SECURE_AUTH_KEY: random_secret
+      LOGGED_IN_KEY: random_secret
+      NONCE_KEY: random_secret
+      AUTH_SALT: random_secret
+      SECURE_AUTH_SALT: random_secret
+      LOGGED_IN_SALT: random_secret
+      NONCE_SALT: random_secret
 
   mysql:
     image: mariadb:10.3
@@ -43,7 +45,5 @@ services:
     ports:
       - 127.0.0.1:3306:3306
     environment:
-      MYSQL_DATABASE: "${DB_NAME}"
-      MYSQL_USER: "${DB_USER}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
-      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: secret
