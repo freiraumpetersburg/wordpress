@@ -27,6 +27,13 @@ if (file_exists($root_dir . '/.env')) {
 }
 
 /**
+ * Set HTTP_HOST to localhost for wpcli
+ */
+if (defined('WP_CLI') && WP_CLI) {
+    $_SERVER['HTTP_HOST'] = 'localhost';
+}
+
+/**
  * Set up our global environment constant and load its config first
  * Default: production
  */
@@ -93,8 +100,17 @@ Config::define('COOKIE_DOMAIN', $_SERVER['HTTP_HOST']);
  * Debugging Settings
  */
 Config::define('WP_DEBUG_DISPLAY', false);
+Config::define('WP_DEBUG_LOG', env('WP_DEBUG_LOG') ?? false);
 Config::define('SCRIPT_DEBUG', false);
-ini_set('display_errors', 0);
+ini_set('display_errors', '0');
+
+/**
+ * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
+ * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
+ */
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
