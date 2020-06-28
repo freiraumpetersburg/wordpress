@@ -8,7 +8,7 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/kulturverein-petersburg",
+  "publicPath": "/content/themes/kulturverein-petersburg",
   "devUrl": "http://kulturverein-petersburg.test",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
