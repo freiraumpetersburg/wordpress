@@ -86,6 +86,18 @@ Config::define('DISALLOW_FILE_EDIT', true);
 Config::define('DISALLOW_FILE_MODS', env('DISALLOW_FILE_MODS') ?: true);
 
 /**
+ * WP Mail SMTP Plugin
+ */
+
+Config::define('WPMS_SMTP_HOST', env('WPMS_SMTP_HOST'));
+Config::define('WPMS_SMTP_PORT', env('WPMS_SMTP_PORT'));
+Config::define('WPMS_SSL', env('WPMS_SSL') ?: '' ); // Possible values '', 'ssl', 'tls' - note TLS is not STARTTLS.
+Config::define('WPMS_SMTP_AUTH', env('WPMS_SMTP_AUTH') ?: true);
+Config::define('WPMS_SMTP_USER', env('WPMS_SMTP_USER')); // SMTP authentication username, only used if WPMS_SMTP_AUTH is true.
+Config::define('WPMS_SMTP_PASS', env('WPMS_SMTP_PASS')); // SMTP authentication password, only used if WPMS_SMTP_AUTH is true.
+Config::define('WPMS_SMTP_AUTOTLS', env('WPMS_SMTP_AUTOTLS') ?: true);
+
+/**
  * Multisite
  */
 Config::define('MULTISITE', true);
