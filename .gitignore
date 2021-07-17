@@ -1,6 +1,7 @@
 # Application
 application/content/plugins/*
 !application/content/plugins/.gitkeep
+!application/content/plugins/events-calendar-pro
 application/content/mu-plugins/*/
 application/content/upgrade
 application/content/uploads/*
