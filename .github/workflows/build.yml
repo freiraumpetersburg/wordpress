@@ -1,0 +1,19 @@
+name: Build docker image
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+    - name: Build docker image
+      run: docker build --tag quay.io/${{ secrets.QUAYIO_REPO }}:${{github.ref_name}}-$(date +%s) .
+    - name: Login to quay.io
+      run: echo ${{ secrets.QUAYIO_PASSWORD }} | docker login -u="${{ secrets.QUAYIO_USERNAME }}" --password-stdin quay.io
+    - name: Push image
+      run: docker push quay.io/${{ secrets.QUAYIO_REPO }}:${{github.ref_name}}-$(date +%s)
