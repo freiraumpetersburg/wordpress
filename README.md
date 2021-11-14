@@ -1,4 +1,4 @@
-# Kulturverein Wordpress [![Build Status](https://travis-ci.com/freiraumpetersburg/wordpress.svg?branch=master)](https://travis-ci.com/freiraumpetersburg/wordpress) [![Docker Repository on Quay](https://quay.io/repository/kulturvereinpetersburg/wordpress/status "Docker Repository on Quay")](https://quay.io/repository/kulturvereinpetersburg/wordpress)
+# Kulturverein Wordpress [![Build image](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml/badge.svg)](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml)
 
 Our [Roots](https://roots.io) based WordPress multisite setup
 
