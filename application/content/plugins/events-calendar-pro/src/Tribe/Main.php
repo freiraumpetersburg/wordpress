@@ -71,7 +71,7 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 		 */
 		public $template_namespace = 'events-pro';
 
-		const VERSION = '5.9.2.1';
+		const VERSION = '5.12.1';
 
 		/**
 		 * The Events Calendar Required Version
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 		 * @deprecated 4.6
 		 *
 		 */
-		const REQUIRED_TEC_VERSION = '5.3.1';
+		const REQUIRED_TEC_VERSION = '5.13.0';
 
 		private function __construct() {
 			$this->pluginDir = trailingslashit( basename( EVENTS_CALENDAR_PRO_DIR ) );
@@ -197,6 +197,7 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			add_filter( 'oembed_request_post_id', array( $this, 'oembed_request_post_id_for_recurring_events' ), 10, 2 );
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'load_widget_assets' ) );
+			add_filter( 'tribe_allow_widget_on_post_page_edit_screen', [ $this, 'load_widget_assets_on_block_editor' ], 10, 2 );
 			add_action( 'wp_ajax_tribe_widget_dropdown_terms', array( $this, 'ajax_widget_get_terms' ) );
 
 			// Start the integrations manager
@@ -207,6 +208,8 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			add_action( 'tribe_events_before_event_template_data_date_display', array( $this, 'disable_recurring_info_tooltip' ) );
 			add_action( 'tribe_events_after_event_template_data_date_display', array( $this, 'enable_recurring_info_tooltip' ) );
 			add_filter( 'tribe_customizer_inline_stylesheets', [ $this, 'customizer_inline_stylesheets' ], 10, 2 );
+
+			add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_dependencies' ] );
 		}
 
 		public function filter_month_week_customizer_label( $args, $section_id, $customizer ) {
@@ -1299,6 +1302,24 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 
 		}
 
+		/**
+		 * Load widget assets on block editor pages.
+		 *
+		 * @since 5.11.1
+		 *
+		 * @param boolean $load_assets Whether to load widget assets or not.
+		 * @param string  $hook        A string of the current page php file.
+		 *
+		 * @return boolean Whether to load the widget assets or not.
+		 */
+		public function load_widget_assets_on_block_editor( $load_assets, $hook ) {
+			if ( is_admin() && get_current_screen()->is_block_editor ) {
+				return true;
+			}
+
+			return $load_assets;
+		}
+
 		public function admin_enqueue_styles() {
 			tribe_asset_enqueue( 'tribe-select2-css' );
 		}
@@ -2087,6 +2108,8 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			tribe( 'events-pro.recurrence.nav' );
 			tribe( 'events-pro.ical' );
 
+			tribe_singleton( Tribe__Events__Pro__Geo_Loc::class, Tribe__Events__Pro__Geo_Loc::instance() );
+
 			tribe_register_provider( 'Tribe__Events__Pro__Service_Providers__ORM' );
 			tribe_register_provider( 'Tribe__Events__Pro__Service_Providers__RBE' );
 			tribe_register_provider( Tribe\Events\Pro\Views\V2\Service_Provider::class );
@@ -2194,5 +2217,17 @@ if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 
 			return array_merge( $sheets, $pro_sheets );
 		}
+
+		/**
+		 * Enqueue the dependency on any block editor page since because of widgets we might have special
+		 * needs for these pages.
+		 *
+		 * @since 5.12.0
+		 */
+		public function enqueue_dependencies() {
+			tribe_asset_enqueue( 'tribe-dependency' );
+			tribe_asset_enqueue( 'tribe-dependency-style' );
+		}
+
 	} // end Class
 }
