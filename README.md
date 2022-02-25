@@ -1,4 +1,4 @@
-# Kulturverein Wordpress [![Build image](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml/badge.svg)](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml)
+# K.A.F.F. Wordpress [![Build image](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml/badge.svg)](https://github.com/freiraumpetersburg/wordpress/actions/workflows/build.yml)
 
 Our [Roots](https://roots.io) based WordPress multisite setup
 
