@@ -52,6 +52,7 @@
     "wpackagist-plugin/safe-svg": "^1.9.4",
     "wpackagist-plugin/svg-support": "^2.3",
     "wpackagist-plugin/the-events-calendar": "^5.1",
+    "wpackagist-plugin/use-any-font": "^6.2",
     "wpackagist-plugin/wp-mail-smtp": "^3.2",
     "wpackagist-plugin/wp-piwik": "^1.0",
     "wpackagist-theme/atomic-blocks": "^1.2",
