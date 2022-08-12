@@ -10,13 +10,13 @@
 namespace Tribe\Events\Pro\Integrations\Elementor\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Plugin;
 use Tribe\Events\Pro\Integrations\Elementor\Traits;
 use Tribe\Events\Views\V2\Assets;
 use Tribe\Events\Views\V2\Manager;
 
 class Widget_Events_View extends Widget_Abstract {
 	use Traits\Categories;
+	use Traits\Tags;
 
 	/**
 	 * {@inheritdoc}
@@ -26,7 +26,7 @@ class Widget_Events_View extends Widget_Abstract {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected $widget_icon = 'fa fa-calendar-alt';
+	protected $widget_icon = 'eicon-calendar';
 
 	/**
 	 * {@inheritdoc}
@@ -75,6 +75,7 @@ class Widget_Events_View extends Widget_Abstract {
 			[
 				'view',
 				'category',
+				'exclude-category',
 				'featured',
 				'date',
 				'tribe-bar',
@@ -82,6 +83,11 @@ class Widget_Events_View extends Widget_Abstract {
 				'events_per_page',
 				'month_events_per_day',
 				'keyword',
+				'organizer',
+				'venue',
+				'author',
+				'tag',
+				'exclude-tag',
 			]
 		);
 
@@ -93,7 +99,7 @@ class Widget_Events_View extends Widget_Abstract {
 	 *
 	 * @since 5.4.0
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -194,11 +200,77 @@ class Widget_Events_View extends Widget_Abstract {
 		);
 
 		$this->add_control(
+			'organizer',
+			[
+				'label'       => __( 'Organizer', 'tribe-events-calendar-pro' ),
+				'placeholder' => __( 'Enter an organizer name or ID.', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default'     => '',
+			]
+		);
+
+		$this->add_control(
+			'venue',
+			[
+				'label'       => __( 'Venue', 'tribe-events-calendar-pro' ),
+				'placeholder' => __( 'Enter a venue name or ID.', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default'     => '',
+			]
+		);
+
+		$this->add_control(
+			'author',
+			[
+				'label'       => __( 'Author', 'tribe-events-calendar-pro' ),
+				'placeholder' => __( 'Enter an author login or ID.', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default'     => '',
+			]
+		);
+
+		$this->add_control(
 			'category',
 			[
 				'label'       => __( 'Category', 'tribe-events-calendar-pro' ),
 				'type'        => Controls_Manager::SELECT2,
 				'options'     => $this->get_event_categories(),
+				'label_block' => true,
+				'multiple'    => true,
+			]
+		);
+
+		$this->add_control(
+			'exclude-category',
+			[
+				'label'       => __( 'Category Exclusion', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => $this->get_event_categories(),
+				'label_block' => true,
+				'multiple'    => true,
+			]
+		);
+
+		$this->add_control(
+			'tag',
+			[
+				'label'       => __( 'Tag', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => $this->get_event_tags(),
+				'label_block' => true,
+				'multiple'    => true,
+			]
+		);
+
+		$this->add_control(
+			'exclude-tag',
+			[
+				'label'       => __( 'Tag Exclusion', 'tribe-events-calendar-pro' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => $this->get_event_tags(),
 				'label_block' => true,
 				'multiple'    => true,
 			]
