@@ -49,7 +49,6 @@
     "wpackagist-plugin/atomic-blocks": "^2.8",
     "wpackagist-plugin/autodescription": "^4.0",
     "wpackagist-plugin/email-address-encoder": "^1.0",
-    "wpackagist-plugin/safe-svg": "^1.9.4",
     "wpackagist-plugin/svg-support": "^2.3",
     "wpackagist-plugin/the-events-calendar": "^5.1",
     "wpackagist-plugin/use-any-font": "^6.2",
